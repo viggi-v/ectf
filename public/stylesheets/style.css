@@ -1,8 +1,16 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+    font-family: tahoma;
+    color: #FFFFFF;
+    background: #efe5ff;
 }
 
-a {
-  color: #00B7FF;
+h1{
+    position: relative;
+    transform: translateY(30%);
+    width: 95%;
+    background: #a872ff;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
 }
