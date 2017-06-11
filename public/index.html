@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular-Sample</title>
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-lumen.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/awesome-bootstrap-checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="jq.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+	<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">IEEE SP WebDev</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="page-header">
+				<h1>
+				Rest API doc : Assignment 2, IEEE SP WebDev
+				</h1>
+			</div>
+		</div>
+		<div class="col-lg-4 fixed_menu">
+			<div class="list-group">
+				<a href="#users" class="list-group-item active">
+					api/users
+				</a>
+				<a href="#posts" class="list-group-item">
+					api/posts
+				</a>
+				<a href="#logout" class="list-group-item">
+					api/logout
+				</a>
+				<a href="#reset" class="list-group-item">
+					api/reset
+				</a>
+			</div>
+		</div>
+
+		<div class="col-lg-8 doc_body">
+			<div id="intro">
+				<h2>Reading an api doc</h2>
+				<hr>
+				The following routes, when prefixed with the url of the server gives you the routes
+				to make the api calls. The method and the parameters for each route is specified.
+				Except a few obvious routes, most of them require you to log in, and read the doc to find out which of them and how to do so.
+
+			</div>
+			<div id="users">
+				<h2>api/users</h2>
+				<hr>
+				<div class="method">
+					<h3><code>GET</code>: api/users</h3>
+					<p>
+						Lists all the registered users, with username.
+					</p>
+				</div>
+				<div class="method">
+					<h3><code>POST</code>: api/users</h3>
+					<p>
+						pass the following params as a post request to register a new user.
+						<ul>
+							<li><code>username</code> : a unique string, <span class="danger">required</span></li>
+							<li><code>password</code></li> : string, <span class="danger">required</span>
+							<li><code>name</code></li> : string, <span class="danger">required</span>
+							<li><code>admin</code></li> : boolean, <span class="info">default:false</span>
+							<li><code>email</code></li> : valid email address, <span class="danger">required</span>
+						</ul>
+					</p>
+				</div>
+				<div class="method">
+					<h3><code>GET</code>: api/users/username</h3>
+					<p>Pass a valid username as a parameter, not as a request. returns the details of the particular user</p>
+				</div>
+				<div class="method">
+					<h3><code>POST</code>: api/users/username</h3>
+					<p>pass the following parameters in the post request to authenticate a user (login).
+						sets a cookie on successful authentication.
+						<ul>
+					<li><code>password</code> : password <span class="danger">required</span></li>
+				</ul>
+					</p>
+				</div>
+
+			</div>
+			<div id="posts">
+				<h2>api/posts</h2>
+				<hr>
+				<div class="method">
+					<h3><code>GET</code>: api/posts</h3>
+					<p>returns all the posts with detail about author</p>
+				</div>
+				<div class="method">
+					<h3>
+						<code>POST</code>: api/posts
+					</h3>
+					<p>
+						use this to create a new post under the name of the logged in author.
+						pass the following parameters:
+						<ul>
+					<li><code>title</code> : String, <span class="danger">required</span></li>
+					<li><code>content</code>: String, <span class="danger">required</span></li>
+				</ul>
+
+					</p>
+				</div>
+				<div class="method">
+					<h3><code>GET</code>: api/post/id</h3>
+					<p>
+						pass a particular post id to see details of that post.
+					</p>
+				</div>
+			</div>
+			<div id="logout">
+				<h2>api/logout</h2>
+				<hr>
+				<div class="method">
+					<h3><code>POST</code>: api/logout</h3>
+					<p>make a <code>post</code> request to this route to log out. no params required</p>
+				</div>
+			</div>
+			<div id="reset">
+				<h2>api/reset</h2>
+				<hr>
+				<div class="method">
+					<h3><code>DELETE</code>: api/reset</h3>
+					<p>Make a request to this route to delete entire posts and users. Requires admin account.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted">Made with <span class="glyphicon glyphicon-heart"></span> by Vighnesh Velayudhan</p>
+		</div>
+	</footer>
+	</body>
+</html>
