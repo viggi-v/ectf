@@ -4,6 +4,7 @@
 
 var mongoose = require("mongoose");
 var properties = require("./properties");
+
 var connectDB = function (callback, fallback) {
     mongoose.connect(properties.db_properties.dev.url);
     var db = mongoose.connection;
