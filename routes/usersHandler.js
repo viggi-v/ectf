@@ -3,7 +3,7 @@
  */
 
 var User = require("../models/user");
-var AES = require("crypto-js/AES");
+//var AES = require("crypto-js/AES");
 var properties = require("../bin/properties");
 var express = require('express');
 var userMiddleWare = require("../middlewares/userMiddleware");
