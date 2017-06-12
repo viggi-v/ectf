@@ -50,6 +50,15 @@
 		<div class="col-lg-8 doc_body">
 			<div id="warnings">
 				<h2>Few things to take care before you start working:</h2>
+				<h3>Disabling web security:</h3>
+				<ul>
+					<li>For <span>Chrome</span>, use <code>start chrome --disable-web-security --user-data-dir="c:/myChromeData"</code> and you should create a dir <code>myChromeData</code> beforehand. This works, and will behave as a completely different chrome, wont merge with normal tabs.</li>
+					<li>For <span>FireFox</span>, follow this <a href="https://stackoverflow.com/questions/17088609/disable-firefox-same-origin-policy/29096229#29096229" title="">link</a> but I am not completely sure if this will work.</li>
+					<li>Make sure you send the ajax calls from such a tab, as I have issues with the server.</li>
+					<li>For those who are curious to know more about the issue:
+					<p>You are sending data from a local host to a server in a different domain. Even sending request to a different domain is not allowed by default, by the same-origin-policy, but we can override it with setting <code>"Access-Control-Allow-Origin"</code> as  <code>'*'</code> (for all domains)(Read about CORS if you wanna know more). But we need to do something more: we need to set cookies when you log in, forcing me to set <code>Access-Control-Allow-Credentials"</code> as <code>'true'</code>. Now using both these configs together is never a safe practice and all the standard browsers will not allow this. So you have to disable web security to get this app working.</p>
+					</li>
+				</ul>
 			</div>
 			<div id="intro">
 				<h2>Reading an api doc</h2>
