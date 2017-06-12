@@ -34,11 +34,15 @@ var corsOptions = {
 // Just a terrible, terrible way, I could'nt stop laughing at this.
 // Thanks to Matt, this guy at stackoverflow who answered this.
 app.use(function(req,res,next){
-    res.setHeader( "Access-Control-Allow-Origin", req.headers.origin );
-    res.setHeader( "Access-Control-Allow-Credentials", true);
+
+    res.setHeader( "Access-Control-Allow-Origin", "*");
+    res.setHeader( "Access-Control-Allow-Credentials", 'true');
     res.setHeader( "Access-Control-Allow-Methods", "GET,POST,DELETE");
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    //console.log("from middleware: "+typeof(req.headers.Origin) +req.headers.Origin);
     // boom!
+    next();
 });
 
 // uncomment after placing your favicon in /public
