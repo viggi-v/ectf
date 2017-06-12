@@ -8,6 +8,7 @@ var dbProps = {
         url:""
     },
     dev: {
+        //url: "mongodb://localhost:27017"
         url: "mongodb://sva:sva97@ds119772.mlab.com:19772/ieeespwd"
     }
 };
