@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular-Sample</title>
+	<script src="js/angular.min.js"></script>
+	<script src="js/ui-router.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/controller.js"></script>
+</head>
+	<body>
+		<h1>Hello</h1>
+		<ul>
+			<li>
+				<a ui-sref="home({id:1})">Home1</a>
+			</li>
+			<li>
+				<a ui-sref="home({id:2})">Home2</a>
+			</li>
+			<li>
+				<a ui-sref="page">Page</a>
+			</li>
+			<li>
+				<a ui-sref="paper">Paper</a>
+			</li>
+			<li>
+				<a ui-sref="login">Login</a>
+			</li>
+		</ul>
+		<div class="info">
+			note the ui-view:
+			it is the place where contents get injected for different states.
+		</div>
+		<div class="container">
+			<div ui-view>
+				
+			</div>
+		</div>
+	</body>
+</html>

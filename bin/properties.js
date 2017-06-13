@@ -2,7 +2,7 @@
  * Created by user on 6/7/2017.
  */
 var dbProps = {
-    adminPassword : "0D52A26ACFC79F227419C268D60C1FC4D1B5FD6AFF8243FC98F27B73652802F5",
+    adminPassword : "0d52a26acfc79f227419c268d60c1fc4d1b5fd6aff8243fc98f27b73652802f5",
     // I think they won't guess it :P
     prod: {
         url:""

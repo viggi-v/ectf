@@ -1,0 +1,15 @@
+<h2>Hell yeah</h2>
+url : <br>
+<input type="text" ng-model = "url">
+<br>
+method : <br>
+<input type="text" ng-model = "method">
+<br>
+Data : <br>
+<textarea ng-model = "data"></textarea>
+<br>
+<button ng-click="sendData()">Send</button>
+<h2>The server responded with:</h2>
+<pre>
+	{{serverResponse}}
+</pre>
