@@ -3,9 +3,9 @@
  */
 var User =require("../models/user");
 
-var adminMiddleware = function () {
-    if(res.cookies.username){
-        User.findOne({"_id":res.cookies.id},function(err,user){
+var adminMiddleware = function (req,res,next) {
+    if(req.cookies.userid){
+        User.findOne({"_id":req.cookies.userid},function(err,user){
             if(err || !user || !user.admin){
                 res.send("You don't have the privilege to access this route");
             }

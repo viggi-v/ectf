@@ -10,5 +10,4 @@ module.exports = userRouter;
 userRouter.route("/")
     .post(function (req,res) {
         res.clearCookie("userid").send("logging you out!");
-        // clear all the cookies!
     });

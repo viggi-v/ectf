@@ -1,0 +1,76 @@
+<div class="col-md-12">
+    <div ng-if="admin" class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title" ng-if="!editing">{{challenge.title}}</h3>
+            <div class="form-group" ng-if="editing">
+                <input class="form-control" name="title" type="text" ng-model="challenge.title" placeholder="Enter the Title" required>
+            </div>
+            <button ng-click="toggleEdit()">{{editMessage}}</button>
+            <button ng-click="deleteChallenge()">delete</button>
+        </div>
+        <div class="panel-body">
+            Category : <br>
+            <p ng-if="!editing">{{challenge.category}}</p>
+            <div class="form-group" ng-if="editing">
+                <input class="form-control" name="category" type="text" ng-model="challenge.category" placeholder="Enter the category" required>
+            </div>
+
+            Description : <br>
+            <p ng-if="!editing">{{challenge.description}}</p>
+            <div class="form-group" ng-if="editing">
+                <input class="form-control" name="description" type="text" ng-model="challenge.description" placeholder="Enter the Description">
+            </div>
+            Points : <br>
+            <div class="form-group" ng-if="editing">
+                <input class="form-control" name="points" type="text" ng-model="challenge.points" placeholder="Enter the Points">
+            </div>
+            <p ng-if="!editing">{{challenge.points}}</p>
+            Links : <br>
+            <div class="form-group" ng-if="editing">
+                <textarea class="form-control" name="links" ng-model="challenge.links" placeholder="Enter the Links, comma seperated"></textarea>
+            </div>
+            <ul ng-if="!editing">
+                <li ng-repeat = "link in challenge.links">{{link}}</li>
+            </ul>
+            Files : <br>
+            <div class="form-group" ng-if="editing">
+                <textarea class="form-control" name="files" ng-model="challenge.files" placeholder="Enter the File links, comma seperated"></textarea>
+            </div>
+            <ul ng-if="!editing">
+                <li ng-repeat = "link in challenge.files">{{link}}</li>
+            </ul>
+            Flag : <br>
+            <div ng-if="editing" class="form-group">
+                <input class="form-control" name="flag" type="text" ng-model="challenge.flag" placeholder="Enter the flag" required>
+            </div>
+            <p ng-if="!editing">{{challenge.flag}}</p>
+
+        </div>
+    </div>
+    <div ng-if="!admin" class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{challenge.title}}</h3>
+        </div>
+        <div class="panel-body">
+            <h3>Category:</h3>
+            <p>{{challenge.category}}</p>
+            <h3>Description</h3>
+            <p>{{challenge.description}}</p>
+            <p>{{challenge.points}} Points</p>
+            <h3>Files:</h3>
+            <ul>
+                <li ng-repeat="file in challenge.files">{{file}}</li>
+            </ul>
+            <h3>Links:</h3>
+            <ul><li ng-repeat="link in challenge.links">{{links}}</li></ul>
+        </div>
+        <div class="panel-footer">
+            <form name="flagForm" ng-init="flagData={}">
+                <div class="form-group">
+                    <input class="form-control" name="flag" type="text" ng-model="flagData.flag" placeholder="Enter the flag" required>
+                </div>
+                <button class="btn btn-primary center-block" ng-click="submitFlag()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

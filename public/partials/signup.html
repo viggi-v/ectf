@@ -1,0 +1,34 @@
+<div class="col-md-4 center-block">
+    <h1 class="center-block">Sign Up</h1>
+    <form name="userForm">
+        <div>
+            <h2>Team Details:</h2>
+            <div class="form-group">
+                <input class="form-control" name="username" type="text" ng-model="username" placeholder="Name" required>
+                <span class="text-danger" ng-show="userForm.username.$invalid && userForm.username.$touched">Invalid Name</span>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" type="password" ng-model="password" placeholder="password" required>
+                <span class="text-danger" ng-show="userForm.password.$invalid && userForm.password.$touched">Invalid Password</span>
+            </div>
+            <div class="form-group" style="display : none">
+                <input class="form-control" name="adminpassword" type="password" ng-model="adminPassword" placeholder="Admin Password">
+                <span class="text-danger" ng-show="userForm.password.$invalid && userForm.password.$touched">Invalid Password</span>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="email" type="email" ng-model="email" placeholder="Email" required>
+                <span class="text-danger" ng-show="userForm.email.$invalid && userForm.email.$touched">Invalid email id</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="signup()">Signup</button>
+        </div>
+        <div class="dataError">
+            <span class="text-danger" ng-show="signupError">
+                {{signupError}}
+            </span>
+        </div>
+    <span class="text-info center-block">Already signed up? go to <a ui-sref="login">login</a></span>
+</form>
+</div>

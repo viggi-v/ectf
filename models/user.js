@@ -7,7 +7,6 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-    name : {type : String, required:true},
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     admin: {type : Boolean, default : false},
@@ -18,7 +17,10 @@ var userSchema = new Schema({
         unique: true,
         required : true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
-    }
+    },
+    solves : [
+        {type : Schema.Types.ObjectId, ref : "Challenge"}
+    ]
 });
 
 var User = mongoose.model('User',userSchema);

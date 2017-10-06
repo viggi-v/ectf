@@ -1,0 +1,75 @@
+<div ng-if="admin" class="row">
+    <h2>Add new Challenge:</h2> <br>
+    <form name="challengeForm" ng-init="challengeData = {}">
+        <div class="form-group">
+            <input class="form-control" type="text" name="title" ng-model="challengeData.title" placeholder="Title">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="points" ng-model="challengeData.points" placeholder="Points">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="category" ng-model="challengeData.category" placeholder="Type of Challenge">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="flag" ng-model="challengeData.flag" placeholder="Flag">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="description" cols="30" rows="10" ng-model="challengeData.description" placeholder="describe your challenges"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="files" cols="30" rows="10" ng-model="challengeData.files" placeholder="Enter file links separated by comma"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="links" cols="30" rows="10" ng-model="challengeData.links" placeholder="Enter external links separated by comma"></textarea>
+        </div>
+
+    </form>
+    <button ng-click="saveNewChallenge()">Save</button>
+
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="col-md-6">
+            <h2>Challenges</h2>
+        </div>
+        <div class="right searchbox col-md-6">
+            <div class="input-group">
+                <input type="text" class="search-query form-control" placeholder="Filter Challenges" />
+                <span class="input-group-btn">
+                    <button class="btn" type="button">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" ng-if="!admin">
+        <h4>Total Score : 300; Position : 1st/50</h4>
+    </div>
+    <div class="col-md-4" ng-if="admin">Total 501 participants</div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-8">
+
+    <div class="col-md-4" ng-repeat="challenge in challenges">
+        <a ui-sref="challenges.challenge({title: '{{challenge.data.title}}'})"><div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{challenge.data.title}}</h3>
+            </div>
+            <div class="panel-body">
+            <span class="center">
+                {{challenge.data.category}}
+            </span>
+                <br>
+                <span>
+                {{challenge.data.points}} points
+            </span>
+            </div>
+        </div></a>
+    </div>
+    </div>
+    <div class="col-md-4">
+        <ui-view></ui-view>
+    </div>
+</div>

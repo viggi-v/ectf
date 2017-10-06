@@ -5,15 +5,14 @@
 var User = require("../models/user");
 var properties = require("../bin/properties");
 var express = require('express');
-var userMiddleWare = require("../middlewares/userMiddleware");
 var userRouter = express.Router();
 
 var authForAdmin = require("../middlewares/adminAuth");
-
+var adminMiddleware = require("../middlewares/adminMiddleware");
 module.exports = userRouter;
 
 userRouter.route("/")
-    .get(userMiddleWare,function(req,res){
+    .get(adminMiddleware,function(req,res){
         // returns all users
         // returns an array of objs, with name and link.
         var response = {};
@@ -42,9 +41,9 @@ userRouter.route("/")
                     response.errorCode = "DB Error: " + err;
                 }
                 else {
-                    response.status = "Insert Successful";
+                    response.status = {"signup" : true};
                     if(userData.admin)
-                        response.status +=", you fuckin admin!";
+                        response.status.admin =true;
                 }
                 res.send(response);
             });
@@ -54,7 +53,7 @@ userRouter.route("/")
             res.send(response);
         }
     });
-userRouter.route("/:username")
+userRouter.route("/:username")/*
     .get(userMiddleWare,function (req,res) {
         // returns full details of a specific user with userName.
         var response = {};
@@ -68,7 +67,7 @@ userRouter.route("/:username")
             }
             res.send(obj);
         });
-    })
+    })*/
     .post(function (req,res) {
         // authenticates the user.
         var username = req.params.username;
@@ -89,14 +88,15 @@ userRouter.route("/:username")
                     // A user found, let's check if passwords match
 
                     if(user.password === password){ // change to encrypted one later
-                        response.statusText = "Success";
+                        response = {"loggedIn" : true,"admin" : user.admin};
 
                         res.cookie('userid',user._id,{
-                            expire : new Date() + 7*86400 // for a day
+                            expire : new Date() + 7*86400, // for a day,
+                            httpOnly : true
                         }).send(response);
                     }
                     else{
-                        response.statusText = "Invalid Password";
+                        response = {"statusText" : "Invalid Password"};
                         res.send(response);
                     }
                 }
@@ -107,4 +107,11 @@ userRouter.route("/:username")
                 }
             }
         });
-    })
+    });
+userRouter.route("/adminCheck",function(req,res){
+    User.findOne({"_id" : req.cookies.userid},function(err,user){
+        if(!err)
+            res.send(user.admin);
+        else res.send(err);
+    });
+});

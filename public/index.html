@@ -1,161 +1,74 @@
 <!DOCTYPE html>
-<html ng-app="mainApp">
+<html ng-app="mainApp" ng-controller="mainController">
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Assignment 2</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECTF</title>
+	
+	<script src="angular/libraries/angular.min.js"></script>
+	<script src="angular/libraries/ui-router.js"></script>
+    <script src="angular/libraries/aes.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-lumen.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/footer.css">
+    <!-- angular cookies -->
+    <script src="angular/libraries/angular-cookies-min.js"></script>
+
+    <script src="angular/main.js"></script>
+    <script src="angular/services/authStorageAccess.js"></script>
+    <script src="angular/services/arrayHandler.js"></script>
+	
+	<!-- The controllers fot different states
+	<script src="angular/controllers/roomController.js"></script>
+	<script src="angular/controllers/roomsController.js"></script>
+	<script src="angular/controllers/addController.js"></script>
+	<script src="angular/controllers/todoController.js"></script>
+    -->
+    <script src="angular/controllers/controller.js"></script>
+	<!-- jQuery, as requied by bootstrap -->
+    <script src="bootstrap/js/jq.js"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-	<link rel="stylesheet" href="css/main.css">
-	<script src="jq.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-	<body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">IEEE SP WebDev</a>
-			</div>
-		</div>
-	</nav>
-	<div class="container">
-		<div class="row">
-			<div class="page-header">
-				<h1>
-				Rest API doc : Assignment 2, IEEE SP WebDev
-				</h1>
-			</div>
-		</div>
-		<div class="col-lg-4 fixed_menu">
-			<div class="list-group">
-				<a href="#users" class="list-group-item active">
-					api/users
-				</a>
-				<a href="#posts" class="list-group-item">
-					api/posts
-				</a>
-				<a href="#logout" class="list-group-item">
-					api/logout
-				</a>
-				<a href="#reset" class="list-group-item">
-					api/reset
-				</a>
-			</div>
-		</div>
 
-		<div class="col-lg-8 doc_body">
-			<div id="warnings">
-				<h2>Few things to take care before you start working:</h2>
-				<h3>Disabling web security:</h3>
-				<ul>
-					<li>For <span>Chrome</span>, use <code>start chrome --disable-web-security --user-data-dir="c:/myChromeData"</code> and you should create a dir <code>myChromeData</code> beforehand. This works, and will behave as a completely different chrome, wont merge with normal tabs.</li>
-					<li>For <span>FireFox</span>, follow this <a href="https://stackoverflow.com/questions/17088609/disable-firefox-same-origin-policy/29096229#29096229" title="">link</a> but I am not completely sure if this will work.</li>
-					<li>Make sure you send the ajax calls from such a tab, as I have issues with the server.</li>
-					<li>For those who are curious to know more about the issue:
-					<p>You are sending data from a local host to a server in a different domain. Even sending request to a different domain is not allowed by default, by the same-origin-policy, but we can override it with setting <code>"Access-Control-Allow-Origin"</code> as  <code>'*'</code> (for all domains)(Read about CORS if you wanna know more). But we need to do something more: we need to set cookies when you log in, forcing me to set <code>Access-Control-Allow-Credentials"</code> as <code>'true'</code>. Now using both these configs together is never a safe practice and all the standard browsers will not allow this. So you have to disable web security to get this app working.</p>
-					</li>
-				</ul>
-			</div>
-			<div id="intro">
-				<h2>Reading an api doc</h2>
-				<hr>
-				The following routes, when prefixed with the url of the server gives you the routes
-				to make the api calls. The method and the parameters for each route is specified.
-				Except a few obvious routes, most of them require you to log in, and read the doc to find out which of them and how to do so.
-
-			</div>
-			<div id="users">
-				<h2>api/users</h2>
-				<hr>
-				<div class="method">
-					<h3><code>GET</code>: api/users</h3>
-					<p>
-						Lists all the registered users, with username.
-					</p>
-				</div>
-				<div class="method">
-					<h3><code>POST</code>: api/users</h3>
-					<p>
-						pass the following params as a post request to register a new user.
-						<ul>
-							<li><code>username</code> : a unique string, <span class="text-danger">required</span></li>
-							<li><code>password</code></li> : string, <span class="text-danger">required</span>
-							<li><code>name</code></li> : string, <span class="text-danger">required</span>
-							<li><code>admin</code></li> : boolean, <span class="text-info">default:false</span>
-							<li><code>email</code></li> : valid email address, <span class="text-danger">required</span>
-						</ul>
-					</p>
-				</div>
-				<div class="method">
-					<h3><code>GET</code>: api/users/username</h3>
-					<p>Pass a valid username as a parameter, not as a request. returns the details of the particular user</p>
-				</div>
-				<div class="method">
-					<h3><code>POST</code>: api/users/username</h3>
-					<p>pass the following parameters in the post request to authenticate a user (login).
-						sets a cookie on successful authentication.
-						<ul>
-					<li><code>password</code> : password <span class="text-danger">required</span></li>
-				</ul>
-					</p>
-				</div>
-
-			</div>
-			<div id="posts">
-				<h2>api/posts</h2>
-				<hr>
-				<div class="method">
-					<h3><code>GET</code>: api/posts</h3>
-					<p>returns all the posts with detail about author</p>
-				</div>
-				<div class="method">
-					<h3>
-						<code>POST</code>: api/posts
-					</h3>
-					<p>
-						use this to create a new post under the name of the logged in author.
-						pass the following parameters:
-						<ul>
-					<li><code>title</code> : String, <span class="text-danger">required</span></li>
-					<li><code>content</code>: String, <span class="text-danger">required</span></li>
-				</ul>
-
-					</p>
-				</div>
-				<div class="method">
-					<h3><code>GET</code>: api/post/id</h3>
-					<p>
-						pass a particular post id to see details of that post.
-					</p>
-				</div>
-			</div>
-			<div id="logout">
-				<h2>api/logout</h2>
-				<hr>
-				<div class="method">
-					<h3><code>POST</code>: api/logout</h3>
-					<p>make a <code>post</code> request to this route to log out. no params required</p>
-				</div>
-			</div>
-			<div id="reset">
-				<h2>api/reset</h2>
-				<hr>
-				<div class="method">
-					<h3><code>DELETE</code>: api/reset</h3>
-					<p>Make a request to this route to delete entire posts and users. Requires admin account.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<footer class="footer">
-		<div class="container">
-			<p class="text-muted">Made with <span class="glyphicon glyphicon-heart"></span> by Vighnesh Velayudhan</p>
-		</div>
-	</footer>
-	</body>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="home">ECTF 2017</a>
+            </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a ui-sref="leaderboard">Leaderboard</a></li>
+                        <li ng-if="loggedin"><a ui-sref="challenges">Challenges</a></li>
+                        <li ng-if="!loggedin"><a ui-sref="signup">Signup</a></li>
+                        <li ng-if="!loggedin"><a ui-sref="login">Login</a></li>
+                        <li ng-if="loggedin"><a ui-sref="logout">Logout</a></li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <!-- Begin page content -->
+    <div class="container" ui-view>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Made with <span class="glyphicon glyphicon-heart"></span> by Comps Committee Engi17</p>
+        </div>
+    </footer>
+  	</body>
 </html>

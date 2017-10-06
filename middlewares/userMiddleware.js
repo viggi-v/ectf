@@ -7,7 +7,6 @@ var userMiddleWare = function (req,res,next) {
     if(req.cookies.userid){
         User.findOne({"_id":req.cookies.userid}, function (err,user) {
             if(err || !user){
-                // reroute
                 res.send("Invaild/Corrupt cookie : Log in again");
             }
             else{
@@ -17,6 +16,6 @@ var userMiddleWare = function (req,res,next) {
     }
     else
         res.send("You must be logged in to access this route");
-}
+};
 
 module.exports = userMiddleWare;

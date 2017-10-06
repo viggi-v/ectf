@@ -1,17 +1,50 @@
-
+/* The add window */
+.checkbox label{
+	width: 100%;
+}
+.checkbox {
+    display: inline-block;
+}
 .panel{
 	word-wrap: break-word;
+}
+/* room todo */
+.row{
+	margin-right: 0px!important;
+	margin-left: 0px!important;
 }
 footer p{
 	text-align: center;
 }
-.method{
-	padding:10px;
+
+.col-md-8.challenges {
+	max-height: 60vh;
+	overflow-y: scroll;
 }
-code {
-	padding: .2rem .4rem;
-	font-size: 90%;
-	color: #bd4147;
-	background-color: #f7f7f9;
-	border-radius: .25rem;
+
+.searchbox{
+	margin-top:20px;
+}
+.searchbox input{
+	border-radius: 0;
+	border:0;
+	border-bottom : 1px solid gray;
+	box-shadow: none;
+	text-align: right;
+}
+.searchbox input:focus{
+	outline: none;
+	box-shadow: none;
+}
+.searchbox button{
+	background-color: transparent;
+	border-bottom:1px solid gray;
+	border-radius: 0;
+}
+
+.center-block{
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
 }

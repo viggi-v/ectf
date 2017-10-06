@@ -9,7 +9,7 @@ var express = require('express');
 var resetRouter = express.Router();
 
 var User = require("../models/user");
-var Posts = require("../models/post")
+var Posts = require("../models/post");
 var adminMiddleware = require("../middlewares/adminMiddleware");
 module.exports = resetRouter;
 
