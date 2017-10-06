@@ -17,8 +17,7 @@ challengeRouter.route('/')
         var user = {};
         User.findOne({"_id" : req.cookies.userid},function(err,userObj){
             user = userObj;
-        })
-            .then(function(){
+            }).then(function(){
             Challenge.find({}, '-description -flag -files -links')
                 .exec(function (err, challenges) {
                     if (err)
@@ -26,7 +25,9 @@ challengeRouter.route('/')
                     else{
                         var ch = [];//challenges;
                         for(var i = 0; i < challenges.length; i++){
-                            ch[i]= {data : challenges[i],solved : user.solves.indexOf(challenges[i]._id) > -1};
+                            console.log(user);
+                            if(user.solves.length > 0) ch[i]= {data : challenges[i],solved : user.solves.indexOf(challenges[i]._id) > -1};
+                            else ch[i] = {data : challenges[i],solved :false}
                         }
                         res.send(ch);
                     }
@@ -48,28 +49,28 @@ challengeRouter.route('/challenge/:challengeTitle')
     .post(userMiddleware,function(req,res){
         // this is where we submit the flag.
         // todo improve the security
-        console.log("it's here!");
         var flag = req.body.flag;
+        console.log(req.body);
         Challenge.findOne({'title' : req.params.challengeTitle},function(err,challenge){
+            console.log(challenge.flag + " and " + flag);
             if(challenge.flag === flag){
-                // todo change the cookie name later
                 User.findOne({"_id":req.cookies.userid},function(err,user){
                     if(!err){
                         if(user.solves.indexOf(challenge._id) === -1) {
                             user.solves.push(challenge._id);
                             user.save(function () {
-                                res.send("Flag correct! point added!");
+                                res.send({"solved" : true});
                             });
                         }
                         else{
-                            res.send("already solved!");
+                            res.send({"solved" : false});
                         }
                     }
                 });
             }
 
             else
-                res.send("Better luck next time!!")
+                res.send({"solved" : false});
         });
     });
 challengeRouter.route('/admin')

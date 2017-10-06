@@ -108,10 +108,11 @@ userRouter.route("/:username")/*
             }
         });
     });
-userRouter.route("/adminCheck",function(req,res){
-    User.findOne({"_id" : req.cookies.userid},function(err,user){
+userRouter.route("/user/info")
+    .get(function(req,res){
+    User.findOne({"_id" : req.cookies.userid},"-password").exec(function(err,user){
         if(!err)
-            res.send(user.admin);
+            res.send(user);
         else res.send(err);
     });
 });

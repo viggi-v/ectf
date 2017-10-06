@@ -10,6 +10,11 @@ angular.module('mainApp', ['ui.router','ngCookies'])
                     requireLogin : false
                 }
             })
+            .state('home.admin',{
+                url : 'admin',
+                templateUrl : 'partials/addChallenge.html',
+                controller : 'adminController'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'partials/login.html',

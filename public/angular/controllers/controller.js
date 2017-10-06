@@ -17,10 +17,10 @@ function loginController($scope, $http, $state, $cookies){
                 $state.go('home');
             }
             else{
-                // todo show the error message
+                $scope.loginError = response.data.statusText;
             }
         }, function(response) {
-            // todo show the error message
+            $scope.loginError = "Connectivity issue, try again!";
             console.log(response);
         });
     }
@@ -54,12 +54,12 @@ function signupController($scope, $http,$state) {
             data: userData,
             method: "POST"
         }).then(function(response) {
-            if(response.data === "User inserted")
+            if(response.status.signup === true)
                 $state.go("login");
             else
-                $state.signupError = response.data;
+                $scope.signupError = response.data;
         }, function(response) {
-            console.log(response);
+            $scope.signupError = "Connectivity issue, try again!";
         });
     }
 }
@@ -75,11 +75,28 @@ function leaderBoardController($http,$scope) {
       }).then(function(response){
           $scope.challenges = response.data.challenges;
           $scope.users = response.data.users;
+          for(var index = 0; index < $scope.users.length; index++){
+              $scope.users[index].points= 0;
+              $scope.users[index].challenges = [];
+              $scope.challenges.forEach(function(challenge){
+                  let obj = $scope.users[index].solves.find(o => o.title === challenge.title);
+                  if(obj){
+                      $scope.users[index].challenges.push(true);
+                      $scope.users[index].points += obj.points;
+                  }
+                  else{
+                      $scope.users[index].challenges.push(false);
+                  }
+              });
+          }
+          $scope.users.sort((a,b) => a.points < b.points);
+
+          console.log($scope.users);
       });
   };
   $scope.loadLeaderBoard();
 }
-function challengeController($scope,$http, $stateParams){
+function challengeController($scope,$http, $stateParams,$state){
     $scope.getChallenge = function(){
         console.log("Getting challenge "+$stateParams.title);
         $http({
@@ -91,14 +108,17 @@ function challengeController($scope,$http, $stateParams){
         });
     };
     $scope.getChallenge();
-    $scope.submitFlag = function(){
+    $scope.submitFlag = function(flag){
         $http({
             url : "/api/challenges/challenge/"+$stateParams.title,
             method : "POST",
-            data : $scope.flagData
+            data : {'flag' : flag}
         }).then(function(response){
-            console.log(response);
-            //todo refresh the challenge list and the score.
+            if(response.data.solved){
+                $state.go('challenges');
+            }
+            else
+                $scope.flagError = "Better Luck Next time!";
         })
     };
     $scope.editing = false;
@@ -152,11 +172,20 @@ function challengesController($scope, $http){
             method : "GET"
         }).then(function(response){
             $scope.challenges = response.data;
-
+            $scope.getPoints();
         });
     };
+    $scope.getPoints = function(){
+        $scope.points = 0;
+        $scope.challenges.forEach(function(obj){
+            if(obj.solved)
+                $scope.points +=obj.data.points;
+        });
+    }
     $scope.getChallenges();
     $scope.saveNewChallenge = function(){
+        console.log($scope.challengeData);
+        console.log("foo");
         $http({
             url : "/api/challenges/admin/",
             data : $scope.challengeData,
@@ -166,11 +195,35 @@ function challengesController($scope, $http){
         });
     };
 }
-function mainController($rootScope,$scope,$cookies){
+function adminController($scope,$http){
+    $scope.saveNewChallenge = function(){
+        console.log($scope.challengeData);
+        console.log("foo");
+        $http({
+            url : "/api/challenges/admin/",
+            data : $scope.challengeData,
+            method : "POST"
+        }).then(function(response){
+            console.log(response);
+        });
+    };
+}
+function mainController($rootScope,$scope,$cookies,$http){
     $rootScope.$on('$stateChangeStart',function(){
         $scope.loggedin = $cookies.get('loggedIn');
-        $scope.admin = $cookies.get('admin')
-    })
+        $scope.admin = $cookies.get('admin');
+    });
+    $scope.getUserData = function(){
+        $http({
+            url : "/api/users/user/info",
+            // sorry for doing this the routing was kinda fucked up in the backend.
+            method : "GET"
+        }).then(function(response){
+            $scope.user = response.data;
+        })
+    };
+    $scope.getUserData()
+
 }
 
 angular.module('mainApp')
@@ -181,4 +234,5 @@ angular.module('mainApp')
     .controller('logoutController', logoutController)
     .controller('challengeController',challengeController)
     .controller('leaderBoardController',leaderBoardController)
+    .controller('adminController',adminController)
     .controller('challengesController',challengesController);

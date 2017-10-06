@@ -54,9 +54,11 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a ui-sref="leaderboard">Leaderboard</a></li>
+                        <li ng-if="admin"><a ui-sref="home.admin">Add new Challenge</a></li>
                         <li ng-if="loggedin"><a ui-sref="challenges">Challenges</a></li>
                         <li ng-if="!loggedin"><a ui-sref="signup">Signup</a></li>
                         <li ng-if="!loggedin"><a ui-sref="login">Login</a></li>
+                        <li ng-if="loggedin"><a>Logged in as @{{user.username}}</a></li>
                         <li ng-if="loggedin"><a ui-sref="logout">Logout</a></li>
                     </ul>
                 </div>

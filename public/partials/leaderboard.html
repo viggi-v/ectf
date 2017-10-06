@@ -5,7 +5,7 @@
         </div>
         <div class="right searchbox col-md-6">
             <div class="input-group">
-                <input type="text" class="search-query form-control" placeholder="Filter Challenges" />
+                <input type="text" class="search-query form-control" ng-model="userFilter" placeholder="Search for usernames" />
                 <span class="input-group-btn">
                     <button class="btn" type="button">
                         <span class=" glyphicon glyphicon-search"></span>
@@ -20,7 +20,8 @@
         <tr>
             <div class="col-md-4">
             <th class="col-md-2">#</th>
-            <th class="col-md-10">Team Name</th>
+            <th class="col-md-8">Team Name</th>
+                <th class="col-md-2">Score</th>
             </div>
             <div class="col-md-8">
                 <th ng-repeat="challenge in challenges"><span class="flip">{{challenge.title}}</span></th>
@@ -28,10 +29,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="user in users">
-            <td>1</td>
+        <tr ng-repeat="user in users | filter : userFilter">
+            <td>{{$index + 1}}</td>
             <td>{{user.username}}</td>
-            <td ng-repeat="challenge in challenges">foo</td>
+            <td>{{user.points}}</td>
+            <td ng-repeat="challenge in challenges">{{user.challenges[$index]}}</td>
         </tr>
         </tbody>
     </table>

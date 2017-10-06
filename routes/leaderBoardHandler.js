@@ -8,12 +8,12 @@ module.exports = leaderBoardRouter;
 
 leaderBoardRouter.route("/")
     .get(function (req,res) {
-        // also sort based on total score.
+
         var challenges = [];
-        Challenge.find({},"-_id -flag -files -description -links -__v").exec(function(err,challengeArray){
+        Challenge.find({}," -_id -flag -files -description -links -__v").exec(function(err,challengeArray){
             challenges = challengeArray;
         }).then(function() {
-            User.find({admin : false}, '-admin -_id -password -email').populate('solves', '-flag -_id -description -category -files -links -__v')
+            User.find({admin : false}, '-admin -_id -password -email').populate('solves', 'title points -_id')
                 .exec(function (err, users) {
                     if (!err)
                         res.send({'challenges': challenges, 'users': users});
