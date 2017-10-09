@@ -12,7 +12,7 @@ angular.module('mainApp', ['ui.router','ngCookies'])
             })
             .state('home.admin',{
                 url : 'admin',
-                templateUrl : 'partials/addChallenge.html',
+                templateUrl : 'partials/addchallenge.html',
                 controller : 'adminController'
             })
             .state('login', {
