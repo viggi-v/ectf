@@ -96,15 +96,13 @@ function leaderBoardController($http,$scope) {
   };
   $scope.loadLeaderBoard();
 }
-function challengeController($scope,$http, $stateParams,$state){
+function challengeController($scope,$http, $stateParams,$state, $window){
     $scope.getChallenge = function(){
-        console.log("Getting challenge "+$stateParams.title);
         $http({
             url : "/api/challenges/challenge/"+$stateParams.title,
             method : "GET"
         }).then(function(response){
             $scope.challenge = response.data[0];
-            console.log($scope.challenge);
         });
     };
     $scope.getChallenge();
@@ -123,15 +121,6 @@ function challengeController($scope,$http, $stateParams,$state){
     };
     $scope.editing = false;
     $scope.editMessage = "Edit";
-    $scope.editChallenge = function(){
-        $http({
-            url : "/api/admin/"+$scope.challenge._id,
-            data : $scope.challengeData,
-            method : "POST"
-        }).then(function(response){
-            console.log(response);
-        });
-    };
     $scope.deleteChallenge = function(){
         $http({
             url : "/api/challenges/admin/"+$scope.challenge._id,
@@ -143,6 +132,16 @@ function challengeController($scope,$http, $stateParams,$state){
     $scope.toggleEdit = function(){
         if($scope.editing === true){
             $scope.editing = false;
+            if($scope.challenge.fileString)
+                $scope.challenge.files = $scope.challenge.fileString.split(",");
+            if($scope.challenge.linkString)
+                $scope.challenge.links = $scope.challenge.linkString.split(",");
+            $scope.challenge.links.forEach(function(str){
+                return str.trim();
+            });
+            $scope.challenge.files.forEach(function(str){
+                return str.trim();
+            });
             $http({
                 url : "/api/challenges/admin/"+$scope.challenge._id,
                 data : $scope.challenge,
@@ -159,9 +158,14 @@ function challengeController($scope,$http, $stateParams,$state){
                 method : "GET"
             }).then(function(response){
                 $scope.challenge = response.data;
+                $scope.challenge.fileString = $scope.challenge.files.join();
+                $scope.challenge.linkString = $scope.challenge.links.join();
             });
             $scope.editMessage = "Save";
         }
+    };
+    $scope.openLink = function(link){
+        $window.open(link,'_blank');
     };
 
 }

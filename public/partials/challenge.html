@@ -27,14 +27,14 @@
             <p ng-if="!editing">{{challenge.points}}</p>
             Links : <br>
             <div class="form-group" ng-if="editing">
-                <textarea class="form-control" name="links" ng-model="challenge.links" placeholder="Enter the Links, comma seperated"></textarea>
+                <textarea class="form-control" name="links" ng-model="challenge.linkString" placeholder="Enter the Links, comma seperated"></textarea>
             </div>
             <ul ng-if="!editing">
                 <li ng-repeat = "link in challenge.links">{{link}}</li>
             </ul>
             Files : <br>
             <div class="form-group" ng-if="editing">
-                <textarea class="form-control" name="files" ng-model="challenge.files" placeholder="Enter the File links, comma seperated"></textarea>
+                <textarea class="form-control" name="files" ng-model="challenge.fileString" placeholder="Enter the File links, comma seperated"></textarea>
             </div>
             <ul ng-if="!editing">
                 <li ng-repeat = "link in challenge.files">{{link}}</li>
@@ -56,10 +56,10 @@
             <hr>
             <p>{{challenge.description}}</p>
             <ul>
-                <li ng-repeat="file in challenge.files">{{file}}</li>
+                <li ng-repeat="file in challenge.files"><a download="ectf_{{file}}">{{file}}</a></li>
             </ul>
             <ul>
-                <li ng-repeat="link in challenge.links">{{links}}</li>
+                <li ng-repeat="link in challenge.links"><a ng-click="openLink(link)">{{link}}</a></li>
             </ul>
         </div>
         <div class="panel-footer">

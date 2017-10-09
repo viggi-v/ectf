@@ -112,6 +112,9 @@ challengeRouter.route('/admin/:challengeId')
                 challenge.category = req.body.category;
                 challenge.description = req.body.description;
                 challenge.flag = req.body.flag;
+                challenge.files = req.body.files;
+                challenge.links = req.body.links;
+
                 challenge.save(function(er){
                     if(!er)
                         res.send("Success");
