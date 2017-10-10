@@ -54,13 +54,7 @@
         <div class="panel-body">
             <p><em>{{challenge.points}} Points</em></p>
             <hr>
-            <p>{{challenge.description}}</p>
-            <ul>
-                <li ng-repeat="file in challenge.files"><a download="ectf_{{file}}">{{file}}</a></li>
-            </ul>
-            <ul>
-                <li ng-repeat="link in challenge.links"><a ng-click="openLink(link)">{{link}}</a></li>
-            </ul>
+            <p ng-bind-html="challenge.description"></p>
         </div>
         <div class="panel-footer">
             <form name="flagForm">

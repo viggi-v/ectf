@@ -17,7 +17,6 @@ leaderBoardRouter.route("/")
                 .exec(function (err, users) {
                     if (!err)
                         res.send({'challenges': challenges, 'users': users});
-                        console.log({'challenges': challenges, 'users': users});
                 })
         });
     });

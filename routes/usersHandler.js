@@ -38,12 +38,16 @@ userRouter.route("/")
         if(adminAuth) {
             newUser.save(function (err, user) {
                 if (err) {
-                    response.errorCode = "DB Error: " + err;
+                    var errMessage = err.toJSON().errmsg;
+                    if(errMessage.search('duplicate key error') > -1 && errMessage.search('index: email') > -1)
+                        response.errorCode = "Already registered with this email!";
+                    else if (errMessage.search('duplicate key error') > -1 && errMessage.search('index: username') > -1)
+                        response.errorCode = "Username not available!";
                 }
                 else {
-                    response.status = {"signup" : true};
+                    response = {"signup" : true};
                     if(userData.admin)
-                        response.status.admin =true;
+                        response.admin =true;
                 }
                 res.send(response);
             });
@@ -86,7 +90,6 @@ userRouter.route("/:username")/*
             else{
                 if(user){
                     // A user found, let's check if passwords match
-
                     if(user.password === password){ // change to encrypted one later
                         response = {"loggedIn" : true,"admin" : user.admin};
 

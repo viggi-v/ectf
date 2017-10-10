@@ -1,4 +1,4 @@
-angular.module('mainApp', ['ui.router','ngCookies'])
+angular.module('mainApp', ['ui.router','ngCookies','ngSanitize'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider

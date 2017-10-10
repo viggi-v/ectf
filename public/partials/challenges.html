@@ -23,22 +23,22 @@
 <div class="row">
     <div class="col-md-8">
 
-    <div class="col-md-4" ng-repeat="challenge in challenges | filter : challengeFilter">
-        <a ui-sref="challenges.challenge({title: '{{challenge.data.title}}'})"><div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{challenge.data.title}}</h3>
-            </div>
-            <div class="panel-body">
+        <div class="col-md-4" ng-repeat="challenge in challenges | filter : challengeFilter">
+            <a ui-sref="challenges.challenge({title: '{{challenge.data.title}}'})"><div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{challenge.data.title}}</h3>
+                </div>
+                <div class="panel-body">
             <span class="center">
                 {{challenge.data.category}}
             </span>
-                <br>
-                <span>
+                    <br>
+                    <span>
                 {{challenge.data.points}} points
             </span>
-            </div>
-        </div></a>
-    </div>
+                </div>
+            </div></a>
+        </div>
     </div>
     <div class="col-md-4">
         <ui-view></ui-view>
