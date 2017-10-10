@@ -33,7 +33,7 @@
             <td>{{$index + 1}}</td>
             <td>{{user.username}}</td>
             <td>{{user.points}}</td>
-            <td ng-repeat="challenge in challenges">{{user.challenges[$index]}}</td>
+            <td ng-repeat="challenge in challenges">{{user.challenges[$index] ? '&#x2714;' : '&#x2717;'}}</td>
         </tr>
         </tbody>
     </table>
