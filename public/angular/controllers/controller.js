@@ -80,7 +80,10 @@ function leaderBoardController($http,$scope) {
               $scope.users[index].points= 0;
               $scope.users[index].challenges = [];
               $scope.challenges.forEach(function(challenge){
-                  let obj = $scope.users[index].solves.find(o => o.title === challenge.title);
+                  var obj = $scope.users[index].solves.find(function(o){
+                      return o.title === challenge.title;
+                  });
+                  //let obj = $scope.users[index].solves.find(o => o.title === challenge.title);
                   if(obj){
                       $scope.users[index].challenges.push(true);
                       $scope.users[index].points += obj.points;
@@ -90,7 +93,7 @@ function leaderBoardController($http,$scope) {
                   }
               });
           }
-          $scope.users.sort((a,b) => a.points < b.points);
+          $scope.users.sort(function(a,b){return a.points < b.points});
 
           //console.log($scope.users);
       });
@@ -193,8 +196,8 @@ function adminController($scope,$http){
 }
 function mainController($rootScope,$scope,$cookies,$http){
     $rootScope.$on('$stateChangeStart',function(event, toState){
-        $scope.loggedin = $cookies.get('loggedIn');
-        $scope.admin = $cookies.get('admin');
+        $scope.loggedin = $cookies.get('loggedIn') || false;
+        $scope.admin = $cookies.get('admin') || false;
         console.log($scope.loggedin);
         if(toState.name === 'home') $scope.getUserData();
     });

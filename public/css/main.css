@@ -48,3 +48,13 @@ footer p{
 	transform: translateX(-50%);
 	text-align: center;
 }
+.mini-center-block {
+	line-height:2;
+	display: inline-block;
+	transform: translateX(-50%);
+	left: 50%;
+	position: relative;
+}
+.mini-center-block h3{
+	text-align: center;
+}

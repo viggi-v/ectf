@@ -13,7 +13,7 @@ var User = require('../models/user');
 var challengeRouter = express.Router();
 
 challengeRouter.route('/')
-    .get(function(req,res){
+    .get(userMiddleware,function(req,res){
         var user = {};
         User.findOne({"_id" : req.cookies.userid},function(err,userObj){
             user = userObj;
