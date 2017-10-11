@@ -26,7 +26,7 @@ challengeRouter.route('/')
                         var ch = [];//challenges;
                         for(var i = 0; i < challenges.length; i++){
                             console.log(user);
-                            if(user.solves.length > 0) ch[i]= {data : challenges[i],solved : user.solves.indexOf(challenges[i]._id) > -1};
+                            if(user && user.solves.length > 0) ch[i]= {data : challenges[i],solved : user.solves.indexOf(challenges[i]._id) > -1};
                             else ch[i] = {data : challenges[i],solved :false}
                         }
                         res.send(ch);
@@ -35,11 +35,11 @@ challengeRouter.route('/')
             });
     });
 
-challengeRouter.route('/challenge/:challengeTitle')
+challengeRouter.route('/challenge/:challengeLink')
     .get(userMiddleware,function (req,res) {
         // todo
         // return problem statement and links of a particular challenge,
-        Challenge.find({"title" : req.params.challengeTitle},'-flag').exec(function(err,challenge){
+        Challenge.find({"link" : req.params.challengeLink},'-flag').exec(function(err,challenge){
             if(err)
                 res.send("Error : ", err);
             else
@@ -51,7 +51,7 @@ challengeRouter.route('/challenge/:challengeTitle')
         // todo improve the security
         var flag = req.body.flag;
         console.log(req.body);
-        Challenge.findOne({'title' : req.params.challengeTitle},function(err,challenge){
+        Challenge.findOne({'link' : req.params.challengeLink},function(err,challenge){
             console.log(challenge.flag + " and " + flag);
             if(challenge.flag === flag){
                 User.findOne({"_id":req.cookies.userid},function(err,user){

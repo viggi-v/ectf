@@ -25,20 +25,6 @@
                 <input class="form-control" name="points" type="text" ng-model="challenge.points" placeholder="Enter the Points">
             </div>
             <p ng-if="!editing">{{challenge.points}}</p>
-            Links : <br>
-            <div class="form-group" ng-if="editing">
-                <textarea class="form-control" name="links" ng-model="challenge.linkString" placeholder="Enter the Links, comma seperated"></textarea>
-            </div>
-            <ul ng-if="!editing">
-                <li ng-repeat = "link in challenge.links">{{link}}</li>
-            </ul>
-            Files : <br>
-            <div class="form-group" ng-if="editing">
-                <textarea class="form-control" name="files" ng-model="challenge.fileString" placeholder="Enter the File links, comma seperated"></textarea>
-            </div>
-            <ul ng-if="!editing">
-                <li ng-repeat = "link in challenge.files">{{link}}</li>
-            </ul>
             Flag : <br>
             <div ng-if="editing" class="form-group">
                 <input class="form-control" name="flag" type="text" ng-model="challenge.flag" placeholder="Enter the flag" required>

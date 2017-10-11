@@ -14,7 +14,7 @@ function loginController($scope, $http, $state, $cookies){
                 if(response.data.admin === true){
                     $cookies.put('admin','true');
                 }
-                $state.go('home');
+                $state.go('home',null,{reload : true});
             }
             else{
                 $scope.loginError = response.data.statusText;
@@ -100,7 +100,7 @@ function leaderBoardController($http,$scope) {
 function challengeController($scope,$http, $stateParams,$state, $window){
     $scope.getChallenge = function(){
         $http({
-            url : "/api/challenges/challenge/"+$stateParams.title,
+            url : "/api/challenges/challenge/"+$stateParams.link,
             method : "GET"
         }).then(function(response){
             $scope.challenge = response.data[0];
@@ -109,7 +109,7 @@ function challengeController($scope,$http, $stateParams,$state, $window){
     $scope.getChallenge();
     $scope.submitFlag = function(flag){
         $http({
-            url : "/api/challenges/challenge/"+$stateParams.title,
+            url : "/api/challenges/challenge/"+$stateParams.link,
             method : "POST",
             data : {'flag' : flag}
         }).then(function(response){
@@ -133,16 +133,7 @@ function challengeController($scope,$http, $stateParams,$state, $window){
     $scope.toggleEdit = function(){
         if($scope.editing === true){
             $scope.editing = false;
-            if($scope.challenge.fileString)
-                $scope.challenge.files = $scope.challenge.fileString.split(",");
-            if($scope.challenge.linkString)
-                $scope.challenge.links = $scope.challenge.linkString.split(",");
-            $scope.challenge.links.forEach(function(str){
-                return str.trim();
-            });
-            $scope.challenge.files.forEach(function(str){
-                return str.trim();
-            });
+            $scope.challenge.link = $scope.challenge.title.trim().replace(/[^a-zA-Z0-9_]/gi,'');
             $http({
                 url : "/api/challenges/admin/"+$scope.challenge._id,
                 data : $scope.challenge,
@@ -159,8 +150,6 @@ function challengeController($scope,$http, $stateParams,$state, $window){
                 method : "GET"
             }).then(function(response){
                 $scope.challenge = response.data;
-                $scope.challenge.fileString = $scope.challenge.files.join();
-                $scope.challenge.linkString = $scope.challenge.links.join();
             });
             $scope.editMessage = "Save";
         }
@@ -192,6 +181,7 @@ function adminController($scope,$http){
     $scope.saveNewChallenge = function(){
         //console.log($scope.challengeData);
         //console.log("foo");
+        $scope.challengeData.link = $scope.challengeData.title.trim().replace(/[^a-zA-Z0-9_]/gi,'');
         $http({
             url : "/api/challenges/admin/",
             data : $scope.challengeData,
@@ -219,7 +209,61 @@ function mainController($rootScope,$scope,$cookies,$http){
     };
     $scope.getUserData();
 }
+function databaseController($scope,$http){
+    $scope.saveDatabase = function(){
+        var files = document.getElementById('selectFiles').files;
+        console.log(files);
+        if (files.length <= 0) {
+            return false;
+        }
 
+        var fr = new FileReader();
+
+        fr.onload = function(e) {
+            console.log(e);
+            var result = JSON.parse(e.target.result);
+            for(var i = 0; i < result.challenges.length; i++){
+                if(!result.challenges[i].link)
+                    result.challenges[i].link = result.challenges[i].title.trim().replace(/[^a-zA-Z0-9_]/gi,'');
+            }
+            $http({
+                url : "/api/database",
+                method : "POST",
+                data : result
+            }).then(function(response){
+                $scope.insertStatus = response.data;
+            });
+            console.log(result);
+        };
+
+        fr.readAsText(files.item(0));
+    };
+    $scope.getDatabase = function(){
+        $http({
+            url : "/api/database",
+            method : "GET"
+        }).then(function(response){
+            var text = JSON.stringify(response.data);
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', 'ectf_backup.json');
+            element.setAttribute('target','_blank');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+        });
+    };
+    $scope.clearDatabase = function(){
+        $http({
+            url : "api/reset",
+            method : "DELETE"
+        }).then(function(response){
+            $scope.deleteStatus = response.data;
+        })
+    }
+}
 angular.module('mainApp')
     .controller('mainController',mainController)
     .controller('homeController',homeController)
@@ -229,4 +273,5 @@ angular.module('mainApp')
     .controller('challengeController',challengeController)
     .controller('leaderBoardController',leaderBoardController)
     .controller('adminController',adminController)
-    .controller('challengesController',challengesController);
+    .controller('challengesController',challengesController)
+    .controller('databaseController',databaseController);

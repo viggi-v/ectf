@@ -1,0 +1,22 @@
+<h2>I am not sure if you really should be doing this, though :)</h2>
+<div class="row">
+    <div class="form-group">
+        Add new data to the database manually
+        <br>
+        (Note that this will <strong>only update </strong> the existing database with
+        the new values, and will not change the present data).
+        <input type="file" id="selectFiles" value="Import" /><br />
+        <button id="import" ng-click="saveDatabase()">Save</button>
+        <br>
+        <p class="text text-success">{{insertStatus}}</p>
+    </div>
+    <div class="form-group">
+        <hr>
+        <h3>Or you could try:</h3>
+        <button class="btn btn-primary" ng-click="getDatabase()">Download All the data in db</button>
+        <hr>
+        <p class="text-danger">Click here to delete All the data in the db. Note that this cannot be undone.</p>
+        <button class="btn btn-danger" ng-click="clearDatabase()">Delete</button>
+        <p class="text text-success">{{deleteStatus}}</p>
+    </div>
+</div>

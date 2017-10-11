@@ -40,7 +40,7 @@ angular.module('mainApp', ['ui.router','ngCookies','ngSanitize'])
                 }
             })
             .state('challenges.challenge',{
-                url : '/:title',
+                url : '/:link',
                 templateUrl : 'partials/challenge.html',
                 controller : 'challengeController',
                 data : {
@@ -59,6 +59,14 @@ angular.module('mainApp', ['ui.router','ngCookies','ngSanitize'])
                 url : "/logout",
                 template : "<h2>Logging you out...</h2>",
                 controller : 'logoutController',
+                data : {
+                    requireLogin : true
+                }
+            })
+            .state('database',{
+                url : "/database",
+                templateUrl : 'partials/database.html',
+                controller : 'databaseController',
                 data : {
                     requireLogin : true
                 }

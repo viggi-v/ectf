@@ -24,7 +24,7 @@
     <div class="col-md-8">
 
         <div class="col-md-4" ng-repeat="challenge in challenges | filter : challengeFilter">
-            <a ui-sref="challenges.challenge({title: '{{challenge.data.title}}'})"><div class="panel panel-primary">
+            <a ui-sref="challenges.challenge({link: '{{challenge.data.link || 'foo'}}'})"><div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{challenge.data.title}}</h3>
                 </div>

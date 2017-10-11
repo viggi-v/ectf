@@ -9,7 +9,7 @@ var express = require('express');
 var resetRouter = express.Router();
 
 var User = require("../models/user");
-var Posts = require("../models/post");
+var Challenge = require("../models/challenge");
 var adminMiddleware = require("../middlewares/adminMiddleware");
 module.exports = resetRouter;
 
@@ -18,10 +18,11 @@ resetRouter.use(adminMiddleware);
 resetRouter.route("/")
     .delete(function (req,res) {
         console.log("Removing everything...");
-        User.remove({},function () {
+        User.remove({"_id" : {$ne : req.cookies.userid}},function () {
             // do nothing
         });
-        Posts.remove({},function () {
+        Challenge.remove({},function () {
             // do nothing
         });
+        res.send("Deleted all!");
     });

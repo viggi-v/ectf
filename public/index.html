@@ -42,6 +42,7 @@
             </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li ng-if="admin"><a ui-sref="database">Database</a></li>
                         <li><a ui-sref="leaderboard">Leaderboard</a></li>
                         <li ng-if="admin"><a ui-sref="home.admin">Add new Challenge</a></li>
                         <li ng-if="loggedin"><a ui-sref="challenges">Challenges</a></li>

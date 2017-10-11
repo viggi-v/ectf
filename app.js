@@ -35,6 +35,7 @@ var logoutHandler = require("./routes/logoutHandler");
 var usersHandler  = require("./routes/usersHandler");
 var challengeHandler = require('./routes/challengeHandler');
 var leaderBoardHandler = require('./routes/leaderBoardHandler');
+var dbHandler = require("./routes/dbHandler");
 
 app.use('/api/reset',resetHandler);
 
@@ -45,6 +46,8 @@ app.use('/api/users',usersHandler);
 app.use('/api/challenges',challengeHandler);
 
 app.use('/api/leaderboard',leaderBoardHandler);
+
+app.use('/api/database',dbHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
