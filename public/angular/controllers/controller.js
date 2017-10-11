@@ -14,7 +14,7 @@ function loginController($scope, $http, $state, $cookies){
                 if(response.data.admin === true){
                     $cookies.put('admin','true');
                 }
-                $state.go('home',null,{reload : true});
+                $state.go('home');
             }
             else{
                 $scope.loginError = response.data.statusText;
@@ -205,6 +205,7 @@ function mainController($rootScope,$scope,$cookies,$http){
     $rootScope.$on('$stateChangeStart',function(event, toState){
         $scope.loggedin = $cookies.get('loggedIn');
         $scope.admin = $cookies.get('admin');
+        console.log($scope.loggedin);
         if(toState.name === 'home') $scope.getUserData();
     });
     $scope.getUserData = function(){
@@ -216,6 +217,7 @@ function mainController($rootScope,$scope,$cookies,$http){
             $scope.user = response.data;
         })
     };
+    $scope.getUserData();
 }
 
 angular.module('mainApp')

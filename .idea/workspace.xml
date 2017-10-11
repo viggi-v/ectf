@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e709b68-05ae-4934-845f-ceb5c4e7fcfb" name="Default" comment="init commit">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/properties.js" afterPath="$PROJECT_DIR$/bin/properties.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/controllers/controller.js" afterPath="$PROJECT_DIR$/public/angular/controllers/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/main.js" afterPath="$PROJECT_DIR$/public/angular/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/partials/addchallenge.html" afterPath="$PROJECT_DIR$/public/partials/addchallenge.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/partials/challenge.html" afterPath="$PROJECT_DIR$/public/partials/challenge.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/partials/challenges.html" afterPath="$PROJECT_DIR$/public/partials/challenges.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/leaderBoardHandler.js" afterPath="$PROJECT_DIR$/routes/leaderBoardHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/usersHandler.js" afterPath="$PROJECT_DIR$/routes/usersHandler.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,23 +18,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="usersHandler.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/usersHandler.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="74" column="29" lean-forward="false" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#43#0" expanded="false" />
-                <element signature="e#415#880#0" expanded="false" />
-                <element signature="e#910#2052#0" expanded="false" />
-                <element signature="e#2085#2555#0" expanded="false" />
-                <element signature="e#2585#3915#0" expanded="false" />
-                <element signature="e#3975#4143#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="logoutHandler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/logoutHandler.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,25 +63,22 @@
       <file leaf-file-name="controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/angular/controllers/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="87" column="23" lean-forward="true" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+            <state relative-caret-position="376">
+              <caret line="207" column="37" lean-forward="false" selection-start-line="207" selection-start-column="37" selection-end-line="207" selection-end-column="37" />
               <folding>
-                <element signature="n#!!block;n#loginController#0" expanded="false" />
                 <element signature="n#!!block;n#logoutController#0" expanded="false" />
                 <element signature="n#!!block;n#signupController#0" expanded="false" />
-                <element signature="e#1402#2159#0" expanded="false" />
+                <element signature="e#1381#2138#0" expanded="false" />
                 <element signature="n#!!block;n#homeController#0" expanded="false" />
+                <element signature="n#!!block;n#leaderBoardController#0" expanded="false" />
                 <element signature="n#!!block;n#challengeController#0" expanded="false" />
-                <element signature="e#3438#3652#0" expanded="false" />
-                <element signature="e#4214#4417#0" expanded="false" />
-                <element signature="e#4453#5791#0" expanded="false" />
-                <element signature="e#5829#5873#0" expanded="false" />
+                <element signature="e#3417#3631#0" expanded="false" />
+                <element signature="e#4193#4396#0" expanded="false" />
+                <element signature="e#4432#5770#0" expanded="false" />
+                <element signature="e#5808#5852#0" expanded="false" />
                 <element signature="n#!!block;n#challengesController#0" expanded="false" />
-                <element signature="e#6209#6380#0" expanded="false" />
+                <element signature="e#6188#6359#0" expanded="false" />
                 <element signature="n#!!block;n#adminController#0" expanded="false" />
-                <element signature="n#!!block;n#mainController#0" expanded="false" />
-                <element signature="e#6914#7077#0" expanded="false" />
-                <element signature="e#7115#7379#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,8 +97,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" column="57" lean-forward="true" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+            <state relative-caret-position="295">
+              <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="properties.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/properties.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -364,46 +346,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ectf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ectf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ectf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ectf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -991,12 +933,12 @@
       <workItem from="1506939789486" duration="184000" />
       <workItem from="1506940773555" duration="8269000" />
       <workItem from="1507010474015" duration="19109000" />
-      <workItem from="1507277364961" duration="37783000" />
+      <workItem from="1507277364961" duration="40790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139940000" />
+    <option name="totallyTimeSpent" value="142947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1007,7 +949,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.34260616" order="0" side_tool="true" content_ui="tabs" x="0" y="19" width="1366" height="709" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.29153606" sideWeight="0.6573939" order="2" side_tool="false" content_ui="tabs" x="1369" y="27" width="1024" height="709" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22100313" sideWeight="0.6573939" order="2" side_tool="false" content_ui="tabs" x="8" y="27" width="1008" height="645" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1318,14 +1260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/properties.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/challenge.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
@@ -1433,31 +1367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/controllers/controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="87" column="23" lean-forward="true" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!block;n#loginController#0" expanded="false" />
-            <element signature="n#!!block;n#logoutController#0" expanded="false" />
-            <element signature="n#!!block;n#signupController#0" expanded="false" />
-            <element signature="e#1402#2159#0" expanded="false" />
-            <element signature="n#!!block;n#homeController#0" expanded="false" />
-            <element signature="n#!!block;n#challengeController#0" expanded="false" />
-            <element signature="e#3438#3652#0" expanded="false" />
-            <element signature="e#4214#4417#0" expanded="false" />
-            <element signature="e#4453#5791#0" expanded="false" />
-            <element signature="e#5829#5873#0" expanded="false" />
-            <element signature="n#!!block;n#challengesController#0" expanded="false" />
-            <element signature="e#6209#6380#0" expanded="false" />
-            <element signature="n#!!block;n#adminController#0" expanded="false" />
-            <element signature="n#!!block;n#mainController#0" expanded="false" />
-            <element signature="e#6914#7077#0" expanded="false" />
-            <element signature="e#7115#7379#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/angular/libraries/ui-router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-288">
@@ -1476,10 +1385,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/properties.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/controllers/controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="207" column="37" lean-forward="false" selection-start-line="207" selection-start-column="37" selection-end-line="207" selection-end-column="37" />
+          <folding>
+            <element signature="n#!!block;n#logoutController#0" expanded="false" />
+            <element signature="n#!!block;n#signupController#0" expanded="false" />
+            <element signature="e#1381#2138#0" expanded="false" />
+            <element signature="n#!!block;n#homeController#0" expanded="false" />
+            <element signature="n#!!block;n#leaderBoardController#0" expanded="false" />
+            <element signature="n#!!block;n#challengeController#0" expanded="false" />
+            <element signature="e#3417#3631#0" expanded="false" />
+            <element signature="e#4193#4396#0" expanded="false" />
+            <element signature="e#4432#5770#0" expanded="false" />
+            <element signature="e#5808#5852#0" expanded="false" />
+            <element signature="n#!!block;n#challengesController#0" expanded="false" />
+            <element signature="e#6188#6359#0" expanded="false" />
+            <element signature="n#!!block;n#adminController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="57" lean-forward="true" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+        <state relative-caret-position="295">
+          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
           <folding />
         </state>
       </provider>
